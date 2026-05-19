@@ -6,15 +6,21 @@
 #include <eclipse.eclipse-menu/include/labels.hpp>
 #include <eclipse.eclipse-menu/include/modules.hpp>
 
-
 using namespace geode::prelude;
 
 $on_mod(Loaded) {
     auto tab = eclipse::MenuTab::find("Force Alternate");
     tab.addToggle("forcealt.enabled", "Force Alternating", [](bool v) {
         Mod::get()->setSettingValue("mod-enabled", v);
+        eclipse::config::set("forcealt.enabled", v);
     }).setDescription("Forces players to strictly alternate inputs.");
+    bool cur = Mod::get()->getSettingValue<bool>("mod-enabled");
+    eclipse::config::set("forcealt.enabled", cur);
+    geode::listenForSettingChanges<bool>("mod-enabled", [](bool v) {
+        eclipse::config::set("forcealt.enabled", v);
+    });
 }
+
 class $modify(TurnPlayLayer, PlayLayer) {
     struct Fields {
         int last = 0;
@@ -29,9 +35,10 @@ class $modify(TurnPlayLayer, PlayLayer) {
         PlayLayer::resetLevel();
         m_fields->last = 0;
         m_fields->held = false;
-        eclipse::label::setVariable<std::string>("turn", "P?");
+        eclipse::label::setVariable<std::string>("turn", "P(what)");
     }
 };
+
 class $modify(TurnInput, GJBaseGameLayer) {
     void handleButton(bool down, int btn, bool p1) {
         auto pl = typeinfo_cast<PlayLayer*>(this);
@@ -40,9 +47,7 @@ class $modify(TurnInput, GJBaseGameLayer) {
             GJBaseGameLayer::handleButton(down, btn, p1);
             return;
         }
-
         auto* f = static_cast<TurnPlayLayer*>(pl)->m_fields.self();
-
         if (!down) {
             f->held = false;
             GJBaseGameLayer::handleButton(down, btn, p1);
@@ -51,7 +56,7 @@ class $modify(TurnInput, GJBaseGameLayer) {
         int who = p1 ? 1 : 2;
         bool bad = f->held || who == f->last;
         if (bad) {
-            eclipse::label::setVariable<std::string>("turn", "!!");
+            eclipse::label::setVariable<std::string>("turn", p1 ? "P1 !!" : "P2 !!");
             if (Mod::get()->getSettingValue<bool>("hard-mode") && m_player1)
                 this->destroyPlayer(m_player1, nullptr);
             return;
