@@ -7,14 +7,45 @@
         "ios": "2.2081"
     },
     "version": "1.0.0",
-    "id": "MalikHw.fuckalternating",
+    "id": "malikhw47.fuckalternating",
     "name": "fuckalternating",
-    "developer": "MalikHw",
-    "description": "desc.",
-    "tags": ["yes", "yeah"],
+    "developer": "MalikHw47",
+    "description": "Alternate P1 and P2 controls",
+    "tags": ["gameplay", "offline"],
     "links": {
         "source": "https://github.com/MalikHw/fuckalternating",
         "community": "https://discord.gg/G9bZ92eg2n"
     },
-    "settings": {}
+    "settings": {
+        "mod-enabled": {
+            "name": "Enabled",
+            "type": "bool",
+            "default": true
+        },
+        "hard-mode": {
+            "name": "Hard Mode",
+            "description": "Die if you press the wrong player",
+            "type": "bool",
+            "default": false
+        },
+        "show-indicator": {
+            "name": "Show Indicator",
+            "type": "bool",
+            "default": true
+        },
+        "indicator-scale": {
+            "name": "Indicator Scale",
+            "type": "float",
+            "default": 0.5,
+            "min": 0.1,
+            "max": 2.0
+        },
+        "indicator-offset-y": {
+            "name": "Indicator Y Offset",
+            "type": "float",
+            "default": 0.0,
+            "min": -100.0,
+            "max": 500.0
+        }
+    }
 }
