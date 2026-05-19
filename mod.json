@@ -47,5 +47,8 @@
             "min": -100.0,
             "max": 500.0
         }
+    },
+    "dependencies": {
+        "eclipse.eclipse-menu": ">=v1.0.5"
     }
 }
