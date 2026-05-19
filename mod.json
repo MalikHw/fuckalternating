@@ -28,11 +28,6 @@
             "type": "bool",
             "default": false
         },
-        "show-indicator": {
-            "name": "Show Indicator",
-            "type": "bool",
-            "default": true
-        },
         "indicator-scale": {
             "name": "Indicator Scale",
             "type": "float",

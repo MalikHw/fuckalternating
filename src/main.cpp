@@ -13,6 +13,10 @@ $on_mod(Loaded) {
     tab.addToggle("forcealt.enabled", "Force Alternating", [](bool v) {
         Mod::get()->setSettingValue("mod-enabled", v);
         eclipse::config::set("forcealt.enabled", v);
+        auto* pl = PlayLayer::get();
+        if (pl) {
+            eclipse::label::setVariable<std::string>("turn", v ? "P1" : "P(none)");
+        }
     }).setDescription("Forces players to strictly alternate inputs.");
     bool cur = Mod::get()->getSettingValue<bool>("mod-enabled");
     eclipse::config::set("forcealt.enabled", cur);
@@ -28,17 +32,18 @@ class $modify(TurnPlayLayer, PlayLayer) {
     };
     bool init(GJGameLevel* lvl, bool replay, bool nobj) {
         if (!PlayLayer::init(lvl, replay, nobj)) return false;
-        eclipse::label::setVariable<std::string>("turn", "P?");
+        bool enabled = Mod::get()->getSettingValue<bool>("mod-enabled");
+        eclipse::label::setVariable<std::string>("turn", enabled ? "P1" : "P(none)");
         return true;
     }
     void resetLevel() {
         PlayLayer::resetLevel();
         m_fields->last = 0;
         m_fields->held = false;
-        eclipse::label::setVariable<std::string>("turn", "P(what)");
+        bool enabled = Mod::get()->getSettingValue<bool>("mod-enabled");
+        eclipse::label::setVariable<std::string>("turn", enabled ? "P1" : "P(none)");
     }
 };
-
 class $modify(TurnInput, GJBaseGameLayer) {
     void handleButton(bool down, int btn, bool p1) {
         auto pl = typeinfo_cast<PlayLayer*>(this);
@@ -63,7 +68,7 @@ class $modify(TurnInput, GJBaseGameLayer) {
         }
         f->held = true;
         f->last = who;
-        eclipse::label::setVariable<std::string>("turn", p1 ? "P1" : "P2");
+        eclipse::label::setVariable<std::string>("turn", p1 ? "P2" : "P1");
         GJBaseGameLayer::handleButton(down, btn, p1);
     }
 };
