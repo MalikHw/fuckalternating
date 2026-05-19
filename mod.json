@@ -27,20 +27,6 @@
             "description": "Die if you press the wrong player",
             "type": "bool",
             "default": false
-        },
-        "indicator-scale": {
-            "name": "Indicator Scale",
-            "type": "float",
-            "default": 0.5,
-            "min": 0.1,
-            "max": 2.0
-        },
-        "indicator-offset-y": {
-            "name": "Indicator Y Offset",
-            "type": "float",
-            "default": 0.0,
-            "min": -100.0,
-            "max": 500.0
         }
     },
     "dependencies": {

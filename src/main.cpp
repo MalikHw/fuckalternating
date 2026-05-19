@@ -61,7 +61,7 @@ class $modify(TurnInput, GJBaseGameLayer) {
         int who = p1 ? 1 : 2;
         bool bad = f->held || who == f->last;
         if (bad) {
-            eclipse::label::setVariable<std::string>("turn", p1 ? "P1 !!" : "P2 !!");
+            eclipse::label::setVariable<std::string>("turn", p1 ? "P2 !!" : "P1 !!");
             if (Mod::get()->getSettingValue<bool>("hard-mode") && m_player1)
                 this->destroyPlayer(m_player1, nullptr);
             return;
