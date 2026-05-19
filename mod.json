@@ -7,10 +7,10 @@
         "ios": "2.2081"
     },
     "version": "1.0.0",
-    "id": "malikhw47.fuckalternating",
-    "name": "fuckalternating",
+    "id": "malikhw47.force-alternate",
+    "name": "Force Alternating",
     "developer": "MalikHw47",
-    "description": "Alternate P1 and P2 controls",
+    "description": "Force you to Alternate P1 and P2 controls",
     "tags": ["gameplay", "offline"],
     "links": {
         "source": "https://github.com/MalikHw/fuckalternating",
