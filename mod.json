@@ -49,6 +49,9 @@
         }
     },
     "dependencies": {
-        "eclipse.eclipse-menu": ">=v1.0.5"
+        "eclipse.eclipse-menu": {
+            "version": ">=v1.9.0",
+            "required": false
+        }
     }
 }

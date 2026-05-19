@@ -1,7 +1,11 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/GJBaseGameLayer.hpp>
 #include <Geode/modify/PlayLayer.hpp>
-#include <eclipse.eclipse-menu/includes/eclipse.hpp>
+#include <eclipse.eclipse-menu/include/components.hpp>
+#include <eclipse.eclipse-menu/include/config.hpp>
+#include <eclipse.eclipse-menu/include/labels.hpp>
+#include <eclipse.eclipse-menu/include/modules.hpp>
+
 
 using namespace geode::prelude;
 
