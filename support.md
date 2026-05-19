@@ -1,4 +1,5 @@
-If you find ts helpful:
+- If you find ts helpful:
 
 
-consider supporting me :>, https://malikhw.github.io/donate
+- consider supporting me :>
+- https://malikhw.github.io/donate

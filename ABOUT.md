@@ -6,3 +6,4 @@ with eclipse integration btw
 
 ## credits:
 - [MalikHw47](https://www.youtube.com/@MalikHw47): Mod Creator
+- [alviannr23](https://github.com/alviannr23): Original Mod Idea
