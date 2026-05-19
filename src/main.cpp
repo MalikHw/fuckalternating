@@ -48,7 +48,7 @@ class $modify(TurnInput, GJBaseGameLayer) {
     void handleButton(bool down, int btn, bool p1) {
         auto pl = typeinfo_cast<PlayLayer*>(this);
         if (!pl) { GJBaseGameLayer::handleButton(down, btn, p1); return; }
-        if (!Mod::get()->getSettingValue<bool>("mod-enabled")) {
+        if (!Mod::get()->getSettingValue<bool>("mod-enabled") || (m_level->m_isPlatformer && btn != (int)PlayerButton::Jump)) {
             GJBaseGameLayer::handleButton(down, btn, p1);
             return;
         }
