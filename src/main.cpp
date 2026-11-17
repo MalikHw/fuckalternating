@@ -30,8 +30,8 @@ class $modify(TurnPlayLayer, PlayLayer) {
         int last = 0;
         bool held = false;
     };
-    bool init(GJGameLevel* lvl, bool replay, bool nobj) {
-        if (!PlayLayer::init(lvl, replay, nobj)) return false;
+    bool init(GJGameLevel* lvl, bool dontCreateObjects) {
+        if (!PlayLayer::init(lvl, dontCreateObjects)) return false;
         bool enabled = Mod::get()->getSettingValue<bool>("mod-enabled");
         // eclipse::label::setVariable<std::string>("turn", enabled ? "P1" : "P(none)");
         return true;
